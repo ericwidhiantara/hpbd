@@ -10,55 +10,128 @@
       rel="stylesheet"
     />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   </head>
   <body>
-    <header>
-      <h1>Happy Birthday Anggi!</h1>
-      <div class="confetti"></div>
-      <div class="confetti"></div>
-      <div class="confetti"></div>
-    </header>
-    <main>
-      <section class="message">
-        <div class="message-content">
-          <p>Dear Anggi,</p>
-          <p>
-            Wishing you the happiest of birthdays! You’re such an amazing
-            friend—always bringing joy and laughter wherever you go. I hope this
-            year brings you as much happiness as you’ve given to those around
-            you. May your day be filled with love, laughter, and all the things
-            you adore. Here’s to more adventures, more memories, and more
-            laughter together. Cheers to you on your special day! 🎉🥳 God bless
-            you always!
-          </p>
-        </div>
-        <div class="photos">
-          <img src="assets/photo1.png" alt="Us laughing together" />
-          <img src="assets/photo2.png" alt="Our favorite trip" />
-          <img src="assets/photo3.png" alt="Cake time!" />
-        </div>
-      </section>
-      <section class="card">
-        <div class="card-inner">
-          <div class="card-front">
-            <p>Click to open your birthday card!</p>
+    <!-- Landing Page -->
+    <div class="landing-page">
+      <div class="landing-container">
+        <header class="landing-header">
+          <h1>Happy Birthday Anggi! 🎉</h1>
+          <div class="confetti"></div>
+        </header>
+        <main class="landing-main">
+          <div class="hero-photo">
+            <img src="assets/photo1.png" alt="Anggi's Birthday" />
           </div>
-          <div class="card-inside">
+          <button class="continue-button" onclick="showMainContent()">
+            Click to Celebrate! 🎂
+          </button>
+        </main>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>Happy Birthday Anggi!</h1>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+      </header>
+      <main>
+        <section class="message">
+          <div class="message-content">
+            <p>Dear Anggi,</p>
             <p>
-              Wishing you a day filled with love, laughter, and lots of cake!
-              🎂✨
+              Wishing you the happiest of birthdays! You’re such an amazing
+              friend—always bringing joy and laughter wherever you go. I hope
+              this year brings you as much happiness as you’ve given to those
+              around you. May your day be filled with love, laughter, and all
+              the things you adore. Here’s to more adventures, more memories,
+              and more laughter together. Cheers to you on your special day!
+              🎉🥳 God bless you always!
             </p>
           </div>
+          <div class="photos">
+            <img src="assets/photo1.png" alt="Hehe" />
+            <img src="assets/photo2.png" alt="Hihi" />
+            <img src="assets/photo3.png" alt="Haha" />
+            <img src="assets/photo4.png" alt="Hoho" />
+          </div>
+        </section>
+        <section class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <p>Click to open your birthday card!</p>
+            </div>
+            <div class="card-inside">
+              <p>
+                Wishing you a day filled with love, laughter, and lots of cake!
+                🎂✨
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="interactive-elements">
+          <div class="balloons"></div>
+          <div class="message-board">
+            <h2>Leave a Birthday Wish!</h2>
+            <input
+              type="text"
+              id="messageInput"
+              placeholder="Type your wish here..."
+            />
+            <button onclick="addMessage()">Add Wish</button>
+            <div id="wishesContainer"></div>
+          </div>
+        </section>
+
+        <div id="lightbox" class="lightbox">
+          <span class="close">&times;</span>
+          <img class="lightbox-content" id="lightboxImg" />
         </div>
-      </section>
-      <button id="musicButton">🎵</button>
-    </main>
-    <footer>
-      <p>Crafted with ❤️ by Grok</p>
-    </footer>
+
+        <!-- Updated music controls -->
+        <div class="music-controls">
+          <button id="musicButton">🎵</button>
+          <input
+            type="range"
+            id="volumeSlider"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5"
+          />
+        </div>
+      </main>
+      <footer>
+        <p>Crafted with ❤️ by Grok</p>
+      </footer>
+    </div>
+
     <audio id="birthdayMusic" loop>
       <source src="assets/MV2.mp3" type="audio/mpeg" />
     </audio>
     <script src="script.js"></script>
+    <script>
+      function showMainContent() {
+        // Hide landing page
+        document.querySelector(".landing-page").style.display = "none";
+
+        // Show main content
+        document.querySelector(".main-content").style.display = "block";
+
+        // Start music after user interaction
+        const music = document.getElementById("birthdayMusic");
+        music.play().catch((error) => {
+          console.log("Autoplay prevented, showing prompt");
+          showMusicPrompt();
+        });
+
+        // Initialize other components
+        initializeMainContent();
+      }
+    </script>
   </body>
 </html>

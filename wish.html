@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
   </head>
   <body>
     <header>
@@ -33,9 +34,10 @@
           </p>
         </div>
         <div class="photos">
-          <img src="assets/photo1.png" alt="Us laughing together" />
-          <img src="assets/photo2.png" alt="Our favorite trip" />
-          <img src="assets/photo3.png" alt="Cake time!" />
+          <img src="assets/photo1.png" alt="Hehe" />
+          <img src="assets/photo2.png" alt="Hihi" />
+          <img src="assets/photo3.png" alt="Haha" />
+          <img src="assets/photo4.png" alt="Hoho" />
         </div>
       </section>
       <section class="card">
@@ -51,11 +53,42 @@
           </div>
         </div>
       </section>
-      <button id="musicButton">🎵</button>
+      <section class="interactive-elements">
+        <div class="balloons"></div>
+        <div class="message-board">
+          <h2>Leave a Birthday Wish!</h2>
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Type your wish here..."
+          />
+          <button onclick="addMessage()">Add Wish</button>
+          <div id="wishesContainer"></div>
+        </div>
+      </section>
+
+      <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" />
+      </div>
+
+      <!-- Updated music controls -->
+      <div class="music-controls">
+        <button id="musicButton">🎵</button>
+        <input
+          type="range"
+          id="volumeSlider"
+          min="0"
+          max="1"
+          step="0.1"
+          value="0.5"
+        />
+      </div>
     </main>
     <footer>
       <p>Crafted with ❤️ by Grok</p>
     </footer>
+    <!-- In wish.html -->
     <audio id="birthdayMusic" loop>
       <source src="assets/MV2.mp3" type="audio/mpeg" />
     </audio>
